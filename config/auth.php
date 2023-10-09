@@ -40,6 +40,16 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'magang' => [
+            'driver' => 'session',
+            'provider' => 'magangs',
+        ],
+
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
     ],
 
     /*
@@ -63,6 +73,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'magangs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Magang::class,
         ],
 
         // 'users' => [

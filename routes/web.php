@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
+Route::middleware(['guest:magang'])->group(function (){
+    Route::get('/', function () {
+        return view('auth.login');
+    })->name('login');
+    Route::get('/proseslogin', [AuthController::class, 'proseslogin']);
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::middleware(['auth:magang'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/proseslogout', [AuthController::class, 'proseslogout']);  
+});

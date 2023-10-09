@@ -38,10 +38,20 @@
                 <h4>Silahkan Log in</h4>
             </div>
             <div class="section mt-1 mb-5">
-                <form action="app-pages.html">
+            @php
+                $messageWarning = Session::get('warning');
+            @endphp
+
+            @if ($messageWarning)
+                <div class="alert alert-outline-warning">
+                    {{ $messageWarning }}
+                </div>
+            @endif
+                <form action="/proseslogin" methode="POST">
+                    @csrf
                     <div class="form-group boxed">
                         <div class="input-wrapper">
-                            <input type="email" class="form-control" id="email1" placeholder="Email address">
+                            <input type="text" name="nim" class="form-control" id="nim" placeholder="NIM/NIS">
                             <i class="clear-input">
                                 <ion-icon name="close-circle"></ion-icon>
                             </i>
@@ -50,7 +60,7 @@
 
                     <div class="form-group boxed">
                         <div class="input-wrapper">
-                            <input type="password" class="form-control" id="password1" placeholder="Password">
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Password">
                             <i class="clear-input">
                                 <ion-icon name="close-circle"></ion-icon>
                             </i>
