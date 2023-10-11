@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('nim');
             $table->string('nama_lengkap');
+            $table->time('tgl_presensi');
             $table->time('jam_in');
             $table->time('jam_out');
             $table->string('foto_in');

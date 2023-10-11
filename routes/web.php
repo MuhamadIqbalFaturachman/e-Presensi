@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PresensiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,9 @@ Route::middleware(['guest:magang'])->group(function (){
 
 Route::middleware(['auth:magang'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
-    Route::get('/proseslogout', [AuthController::class, 'proseslogout']);  
+    Route::get('/proseslogout', [AuthController::class, 'proseslogout']);
+    
+    //Presensi
+    Route::get('/presensi/create',[PresensiController::class,'create']);
+    Route::post('/presensi/store',[PresensiController::class,'store']);
 });
