@@ -94,9 +94,9 @@
                 data:{
                     _token:"{{ csrf_token() }}",
                     image:image,
-                    lokasi:lokasi
-                },
-                chace:false,
+                    lokasi:lokasi,
+                },      
+                cache:false,
                 success:function(respond){
 
                 }

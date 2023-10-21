@@ -17,7 +17,8 @@ return new class extends Migration
             $table->time('jam_out');
             $table->string('foto_in');
             $table->string('foto_out');
-            $table->text('location');
+            $table->text('lokasi_in');
+            $table->text('lokasi_out');
         });
     }
 };

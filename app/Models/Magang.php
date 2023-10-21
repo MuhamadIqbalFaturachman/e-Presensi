@@ -16,7 +16,6 @@ class Magang extends Authenticatable
     protected $primaryKey = "nim";
 
     protected $fillable = [
-        'id',
         'nim',
         'nama_lengkap',
         'bagian',

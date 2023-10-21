@@ -29,5 +29,5 @@ Route::middleware(['auth:magang'])->group(function () {
     
     //Presensi
     Route::get('/presensi/create',[PresensiController::class,'create']);
-    Route::post('/presensi/store',[PresensiController::class,'store']);
+    Route::post('/presensi/presensi/store',[PresensiController::class,'store']);
 });
