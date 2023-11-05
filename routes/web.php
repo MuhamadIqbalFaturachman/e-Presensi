@@ -28,6 +28,10 @@ Route::middleware(['auth:magang'])->group(function () {
     Route::get('/proseslogout', [AuthController::class, 'proseslogout']);
     
     //Presensi
-    Route::get('/presensi/create',[PresensiController::class,'create']);
-    Route::post('/presensi/presensi/store',[PresensiController::class,'store']);
+    Route::get('/presensi/create', [PresensiController::class,'create']);
+    Route::post('/presensi/presensi/store', [PresensiController::class,'store']);
+
+    //Edit profile
+    Route::get('/editprofile', [PresensiController::class, 'editprofile']);
+    Route::post('/presensi/{nim}/updateprofile', [PresensiController::class, 'updateprofile']);
 });

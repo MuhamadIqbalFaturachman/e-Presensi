@@ -1,6 +1,6 @@
 @extends('layout.presensi')
 @section('header')
-    <div class="appHeader bg-primary text-light">
+    <div class="appHeader text-light" style="background-color: #F875AA;">
         <div class="left">
             <a href="javascript:;" class="headerButton goBack">
                 <ion-icon name="chevron-back-outline"></ion-icon>
@@ -35,10 +35,17 @@
 </div>
 <div class="row">
     <div class="col">
-        <button id="takeabsen" class="btn btn-primary btn-block">
+        @if ($cek > 0)
+        <button id="takeabsen" class="btn btn-danger btn-block">
+            <ion-icon name="camera-outline"></ion-icon>
+            Absen pulang
+        </button>
+        @else
+        <button id="takeabsen" class="btn btn-success btn-block">
             <ion-icon name="camera-outline"></ion-icon>
             Absen Masuk
         </button>
+        @endif
     </div>
 </div>
 <div class="row mt-1">
@@ -98,7 +105,21 @@
                 },      
                 cache:false,
                 success:function(respond){
-
+                    var status = respond.split("|");
+                    if(status[0] == "success"){
+                        Swal.fire({
+                        title: 'Success!',
+                        text: status[1],
+                        icon: 'success',
+                        })
+                        setTimeout("location.href='/dashboard'", 3000);
+                    }else{
+                        Swal.fire({
+                        title: 'Error!',
+                        text: 'Maaf gagal absen',
+                        icon: 'error',
+                        })
+                    }
                 }
             })
         })

@@ -17,7 +17,7 @@
     <link rel="manifest" href="__manifest.json">
 </head>
 
-<body class="bg-white">
+<body>
 
     <!-- loader -->
     <div id="loader">
@@ -71,9 +71,8 @@
                         <div><a href="page-forgot-password.html" class="text-muted">Forgot Password?</a></div>
                     </div>
 
-                    <div class="form-button-group">
-                        <button type="submit" class="btn btn-primary btn-block btn-lg">Log in</button>
-                    </div>
+                    <button type="submit" class=" btn-block btn-success btn-lg">Log in</button>
+
 
                 </form>
             </div>
