@@ -176,8 +176,8 @@
                                     </div>
                                     <div class="in">
                                         <div>{{ date("d-m-Y",strtotime($d->tgl_presensi)) }}</div>
-                                        <span class="badge badge-success">{{ $d->jam_in }}</span>
-                                        <span class="badge badge-danger">{{ $d->jam_out }}</span>
+                                        <span class="badge {{ $d->jam_in < '08:00' ? 'bg-success' : 'bg-danger' }}">{{ $d->jam_in }}</span>
+                                        <span class="badge badge-primary">{{ $d->jam_out }}</span>
                                     </div>
                                 </div>
                             </li>

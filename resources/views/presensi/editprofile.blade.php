@@ -10,6 +10,7 @@
         <div class="pageTitle">Edit Profile</div>
         <div class="right"></div>
     </div>
+<!-- App Header -->
 @endsection
 
 @section('content')

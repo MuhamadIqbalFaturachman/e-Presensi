@@ -34,4 +34,8 @@ Route::middleware(['auth:magang'])->group(function () {
     //Edit profile
     Route::get('/editprofile', [PresensiController::class, 'editprofile']);
     Route::post('/presensi/{nim}/updateprofile', [PresensiController::class, 'updateprofile']);
+
+    //Histori
+    Route::get('/presensi/histori', [PresensiController::class, 'histori']);
+    Route::post('/gethistori', [PresensiController::class, 'gethistori']);
 });
