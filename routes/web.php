@@ -23,6 +23,15 @@ Route::middleware(['guest:magang'])->group(function (){
     Route::get('/proseslogin', [AuthController::class, 'proseslogin']);
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/panel', function () {
+        return view('auth.loginadmin');
+    })->name('loginadmin');
+});
+
+Route::post('/prosesloginadmin', [AuthController::class, 'prosesloginadmin']);
+
+
 Route::middleware(['auth:magang'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/proseslogout', [AuthController::class, 'proseslogout']);
@@ -38,4 +47,16 @@ Route::middleware(['auth:magang'])->group(function () {
     //Histori
     Route::get('/presensi/histori', [PresensiController::class, 'histori']);
     Route::post('/gethistori', [PresensiController::class, 'gethistori']);
+
+    //Izin
+    Route::get('/presensi/izin', [PresensiController::class, 'izin']);
+    Route::get('/presensi/buatizin', [PresensiController::class, 'buatizin']);
+    Route::post('/presensi/storeizin', [PresensiController::class, 'storeizin']);
+
+    //Presensi
+    Route::get('/presensi/laporan', [PresensiController::class, 'laporan']);
+    Route::get('/presensi/cetaklaporan', [PresensiController::class, 'cetaklaporan']);
+    Route::get('/presensi/izinsakit', [PresensiController::class, 'izinsakit']);
 });
+
+Route::get('/dashboardadmin', [DashboardController::class, 'dashboardadmin']);

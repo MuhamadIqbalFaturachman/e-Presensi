@@ -140,5 +140,74 @@ class PresensiController extends Controller
 
         return view('presensi.gethistori',compact('histori'));
     }
+
+    public function izin()
+    {
+        $nim = Auth::guard('magang')->user()->nim;
+        $dataizin = DB::table('pengajuan_izin')->where('nim',$nim)->get();
+        return view('presensi.izin',compact('dataizin'));
+    }
+
+    public function buatizin()
+    {
+        return view('presensi.buatizin');
+    }
+
+    public function storeizin(Request $request)
+    {
+        $nim = Auth::guard('magang')->user()->nim;
+        $tgl_izin = $request->input('tgl_izin');
+        $status = $request->input('status');
+        $keterangan = $request->input('keterangan');
+
+        $data = [
+            'nim' => $nim,
+            'tgl_izin' => $tgl_izin,
+            'status' => $status,
+            'keterangan' => $keterangan
+        ];
+
+        $simpan = DB::table('pengajuan_izin')->insert($data);
+
+        if ($simpan) {
+            return redirect('/presensi/izin')->with(['success' => 'Data berhasil disimpan']);
+        }else {
+            return redirect('/presensi/izin')->with(['error' => 'Data gagal disimpan']);
+        }
+
+    }
+
+    public function laporan()
+    {
+        $namabulan = ["","Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+        $siswa = DB::table('magang')->orderBy('nama_lengkap')->get();
+        return view('presensi.laporan', compact('namabulan','siswa'));
+    }
+
+    public function cetaklaporan(Request $request)
+    {
+        $nim = $request->nim;
+        $bulan = $request->bulan;
+        $tahun = $request->tahun;
+        $siswa = DB::table('magang')->where('nim', $nim)->first();
+
+        $presensi = DB::table('presensi')
+        ->where('nim', $nim)
+        ->whereRaw('MONTH(tgl_presensi)="' . $bulan . '"')
+        ->whereRaw('YEAR(tgl_presensi)="' . $tahun . '"')
+        ->orderBy('tgl_presensi')
+        ->get();
+
+        return view('presensi.cetaklaporan', compact('bulan', 'tahun', 'siswa', 'presensi'));
+    }
+
+    public function izinsakit()
+    {
+        $izinsakit = DB::table('pengajuan_izin')
+        ->join('magang','pengajuan_izin.nim','magang.nim')
+        ->orderBy('tgl_izin', 'desc')
+        ->get();
+        return view ('presensi.izinsakit', compact('izinsakit'));
+    }
     
 }
