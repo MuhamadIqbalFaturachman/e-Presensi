@@ -44,10 +44,17 @@
                 <div class="card-body">
                   <h2 class="h2 text-center mb-4">Login to your account</h2>
                   <form action="/prosesloginadmin" method="get" autocomplete="off" novalidate>
-                    @csrf
+                    @php
+                    $messageWarning = Session::get('warning');
+                    @endphp
+                    @if ($messageWarning)
+                      <div class="alert alert-outline-warning">
+                          {{ $messageWarning }}
+                      </div>
+                    @endif
                     <div class="mb-3">
-                      <label class="form-label">Email address</label>
-                      <input type="email" name="email" class="form-control" placeholder="your@email.com" autocomplete="off">
+                      <label class="form-label">Ussername</label>
+                      <input type="email" name="email" class="form-control" placeholder="Your Name" autocomplete="off">
                     </div>
                     <div class="mb-2">
                       <label class="form-label">

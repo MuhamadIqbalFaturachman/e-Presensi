@@ -23,13 +23,12 @@ Route::middleware(['guest:magang'])->group(function (){
     Route::get('/proseslogin', [AuthController::class, 'proseslogin']);
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['guest:magang'])->group(function () {
     Route::get('/panel', function () {
         return view('auth.loginadmin');
     })->name('loginadmin');
+    Route::get('/prosesloginadmin', [AuthController::class, 'prosesloginadmin']);
 });
-
-Route::post('/prosesloginadmin', [AuthController::class, 'prosesloginadmin']);
 
 
 Route::middleware(['auth:magang'])->group(function () {
