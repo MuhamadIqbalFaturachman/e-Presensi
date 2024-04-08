@@ -576,6 +576,10 @@ button:focus {
   font-weight: 700;
 }
 
+.conotent {
+  padding-bottom: 60px;
+}
+
 .content-header,
 .content-footer {
   font-size: 11px;
@@ -749,6 +753,44 @@ button:focus {
 .action-group .action-button:last-child {
   border-right: 0;
 }
+
+/* Styling untuk tata letak responsif */
+@media (max-width: 991.98px) {
+  #sidebar {
+    position: fixed;
+    z-index: 1030;
+    top: 0;
+    left: -260px; /* Menyembunyikan sidebar */
+    width: 260px;
+    height: 100vh;
+    overflow-y: auto;
+    transition: all 0.3s;
+  }
+
+  #sidebar.show {
+    left: 0; /* Menampilkan sidebar */
+  }
+
+  #main-content {
+    margin-left: 0;
+  }
+}
+
+/* Styling untuk tata letak desktop */
+@media (min-width: 992px) {
+  #sidebar {
+    position: sticky;
+    top: 0;
+    width: 260px;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  #main-content {
+    margin-left: 260px; /* Memberikan ruang untuk sidebar */
+  }
+}
+
 
 #sidebarPanel .modal-dialog {
   position: fixed;

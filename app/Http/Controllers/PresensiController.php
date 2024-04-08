@@ -179,7 +179,7 @@ class PresensiController extends Controller
 
     public function laporan()
     {
-        $namabulan = ["","Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+        $namabulan = ["","January","February","March","April","May","June","July","August","September","Octobre","November","December"];
         $siswa = DB::table('magang')->orderBy('nama_lengkap')->get();
         return view('presensi.laporan', compact('namabulan','siswa'));
     }

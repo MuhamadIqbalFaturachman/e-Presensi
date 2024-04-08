@@ -1,6 +1,6 @@
 @if($histori->isEmpty())
 <div class="alert alert-outline-danger text-center">
-    <p>Maaf tidak ada data untuk ditampilkan</p>
+    <p>Sorry there is no data to show.</p>
 </div>
 @endif
 @foreach ($histori as $d)

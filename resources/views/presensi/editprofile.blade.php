@@ -2,13 +2,13 @@
 
 @section('header')
 <!-- App Header -->
-<div class="appHeader text-light" style="background-color: #F875AA;">
+<div class="appHeader text-light" style="background-color: #008DDA;">
     <div class="left">
         <a href="javascript:;" class="headerButton goBack">
             <ion-icon name="chevron-back-outline"></ion-icon>
         </a>
     </div>
-    <div class="pageTitle">Edit Profile</div>
+    <div class="pageTitle">Settings</div>
     <div class="right"></div>
 </div>
 <!-- App Header -->
@@ -38,12 +38,12 @@
     <div class="col">
         <div class="form-group boxed">
             <div class="input-wrapper">
-                <input type="text" class="form-control" value="{{ $magang->nama_lengkap }}" name="nama_lengkap" placeholder="Nama Lengkap" autocomplete="off">
+                <input type="text" class="form-control" value="{{ $magang->nama_lengkap }}" name="nama_lengkap" placeholder="Full Name" autocomplete="off">
             </div>
         </div>
         <div class="form-group boxed">
             <div class="input-wrapper">
-                <input type="text" class="form-control" value="{{ $magang->no_hp }}" name="no_hp" placeholder="No. HP" autocomplete="off">
+                <input type="text" class="form-control" value="{{ $magang->no_hp }}" name="no_hp" placeholder="Phone Number" autocomplete="off">
             </div>
         </div>
         <div class="form-group boxed">

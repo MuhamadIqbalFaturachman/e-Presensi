@@ -6,19 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
-        //
-    }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        //
+        Schema::create('pinjams', function (Blueprint $table) {
+            $table->id();
+            $table->string('id_pinjaman');
+            $table->string('nama_peminjam');
+            $table->string('jumlah_pinjaman');
+            $table->string('metode');
+            $table->string('angsuran');
+            $table->date('tanggal_pinjaman');
+            $table->time('waktu_pinjaman');
+            $table->timestamps();
+        });
     }
 };

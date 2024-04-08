@@ -6,7 +6,7 @@
         <div class="row g-2 align-items-center">
             <div class="col">
                 <h2 class="page-title">
-                    Data Izin / Sakit
+                    Leave and Sick Application Menu
                 </h2>
             </div>
         </div>
@@ -36,7 +36,7 @@
                             <td>{{ date('d-m-Y',strtotime($d->tgl_izin)) }}</td>
                             <td>{{ $d->nim }}</td>
                             <td>{{ $d->nama_lengkap }}</td>
-                            <td>{{ $d->status == "i" ? "izin" : "sakit" }}</td>
+                            <td>{{ $d->status == "i" ? "Paid Leave" : "Sick" }}</td>
                             <td>{{ $d->keterangan }}</td>
                             <td>
                                 @if ($d->status_aproval==1)

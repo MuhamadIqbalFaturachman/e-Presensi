@@ -1,13 +1,13 @@
 @extends('layout.presensi')
 @section('header')
 <!-- App Header -->
-<div class="appHeader text-light" style="background-color: #F875AA;">
+<div class="appHeader text-light" style="background-color: #008DDA;">
         <div class="left">
             <a href="javascript:;" class="headerButton goBack">
                 <ion-icon name="chevron-back-outline"></ion-icon>
             </a>
         </div>
-        <div class="pageTitle">Data Izin / Sakit</div>
+        <div class="pageTitle">Leave and Sick Application Menu</div>
         <div class="right"></div>
     </div>
 <!-- App Header -->
@@ -39,7 +39,7 @@
                 <div class="item">
                     <div class="in">
                         <div>
-                            <b>{{ date("Y-m-d",strtotime($d->tgl_izin)) }} ({{ $d->status== "s" ? "Sakit" : "Izin" }})</b>
+                            <b>{{ date("Y-m-d",strtotime($d->tgl_izin)) }} ({{ $d->status== "s" ? "Sick" : "Paid Leave" }})</b>
                             <small class="text-muted">{{ $d->keterangan }}</small> 
                         </div>
                         @if ($d->status_aproval == 0)

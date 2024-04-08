@@ -1,13 +1,13 @@
 @extends('layout.presensi')
 @section('header')
 <!-- App Header -->
-<div class="appHeader text-light" style="background-color: #F875AA;">
+<div class="appHeader text-light" style="background-color: #008DDA;">
         <div class="left">
             <a href="javascript:;" class="headerButton goBack">
                 <ion-icon name="chevron-back-outline"></ion-icon>
             </a>
         </div>
-        <div class="pageTitle">Histori Presensi</div>
+        <div class="pageTitle">Attendance History</div>
         <div class="right"></div>
     </div>
 <!-- App Header -->
@@ -19,7 +19,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <select name="bulan" id="bulan" class="form-control">
-                        <option value="">Bulan</option>
+                        <option value="">Month</option>
                         @for ($i=1; $i<=12; $i++)<option value="{{ $i }}" {{ date("m") == $i ? 'selected' : '' }}>{{ $namabulan[$i] }}</option>
                         @endfor
                     </select>
@@ -30,7 +30,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <select name="tahun" id="tahun" class="form-control">
-                        <option value="">Tahun</option>
+                        <option value="">Year</option>
                         @php
                         $tahunmulai = 2022;
                         $tahunsekarang = date("Y");

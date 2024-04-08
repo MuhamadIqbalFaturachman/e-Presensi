@@ -16,6 +16,7 @@
     <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Base Js File -->
     <script src="{{ asset('assets/js/base.js') }}"></script>
 
@@ -50,6 +51,14 @@
                 },
             ];
 
+            document.addEventListener("DOMContentLoaded", function() {
+                const sidebarToggle = document.querySelector('.navbar-toggler');
+                const sidebar = document.querySelector('#sidebar');
+
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('show');
+            });
+            });
 
 
             var series = chart.series.push(new am4charts.PieSeries3D());

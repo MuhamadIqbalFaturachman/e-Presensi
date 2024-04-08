@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Task;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        $task = Task::all();
         $hariini = date("Y-m-d");
         $bulanini = date("m")*1;
         $tahunini = date("Y");
@@ -44,8 +46,8 @@ class DashboardController extends Controller
         ->where('status_aproval', 1)
         ->first();
 
-        $namabulan = ["","Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
-        return view('dashboard.dashboard',compact('presensihariini','historibulanini','namabulan','bulanini','tahunini','rekappresensi','leaderboard'));
+        $namabulan = ["","January","FebruarY","March","April","May","June","July","August","September","October","November","December"];
+        return view('dashboard.dashboard',compact('presensihariini','historibulanini','namabulan','bulanini','tahunini','rekappresensi','leaderboard','task'));
     }
 
     public function dashboardadmin()

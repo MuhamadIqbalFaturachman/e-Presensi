@@ -1,6 +1,6 @@
 @extends('layout.presensi')
 @section('content')
-<div class="section" id="user-section" style="background-color: #F875AA;">
+<div class="section" id="user-section" style="background-color: #008DDA;">
             <div id="user-detail">
                 <div class="avatar">
                     @if(!empty(Auth::guard('magang')->user()->foto))
@@ -25,85 +25,53 @@
                     <div class="list-menu">
                         <div class="item-menu text-center">
                             <div class="menu-icon">
-                                <a href="" class="green" style="font-size: 40px;">
-                                    <ion-icon name="person-sharp"></ion-icon>
+                                <a href="/pinjaman/pinjaman" class="green" style="font-size: 40px;">
+                                    <ion-icon name="card-outline"></ion-icon>
                                 </a>
                             </div>
                             <div class="menu-name">
-                                <span class="text-center">Profil</span>
+                                <span class="text-center">Loan</span>
                             </div>
                         </div>
                         <div class="item-menu text-center">
                             <div class="menu-icon">
-                                <a href="" class="danger" style="font-size: 40px;">
-                                    <ion-icon name="calendar-number"></ion-icon>
+                                <a href="/task/index" class="pimary" style="font-size: 40px;">
+                                    <ion-icon name="code-working-outline"></ion-icon>
                                 </a>
                             </div>
                             <div class="menu-name">
-                                <span class="text-center">Cuti</span>
+                                <span class="text-center">My Task</span>
                             </div>
                         </div>
                         <div class="item-menu text-center">
                             <div class="menu-icon">
-                                <a href="" class="warning" style="font-size: 40px;">
-                                    <ion-icon name="document-text"></ion-icon>
+                                <a href="/slipgaji/index" class="danger" style="font-size: 40px;">
+                                    <ion-icon name="wallet-outline"></ion-icon>
                                 </a>
                             </div>
                             <div class="menu-name">
-                                <span class="text-center">Histori</span>
+                                <span class="text-center">Salary</span>
                             </div>
                         </div>
                         <div class="item-menu text-center">
                             <div class="menu-icon">
-                                <a href="" class="orange" style="font-size: 40px;">
-                                    <ion-icon name="location"></ion-icon>
+                                <a href="/billing/index" class="warning" style="font-size: 40px;">
+                                    <ion-icon name="cash-outline"></ion-icon>
                                 </a>
                             </div>
                             <div class="menu-name">
-                                Lokasi
+                                <span class="text-center">Billing</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="section mt-2" id="presence-section">
-            <div class="todaypresence">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="card gradasigreen">
-                            <div class="card-body">
-                                <div class="presencecontent">
-                                    <div class="iconpresence">
-                                        <ion-icon name="camera"></ion-icon>
-                                    </div>
-                                    <div class="presencedetail">
-                                        <h4 class="presencetitle">Masuk</h4>
-                                        <span>{{ $presensihariini !== null ? $presensihariini->jam_in : 'Belum Absen' }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="card gradasired">
-                            <div class="card-body">
-                                <div class="presencecontent">
-                                    <div class="iconpresence">
-                                        <ion-icon name="camera"></ion-icon>
-                                    </div>
-                                    <div class="presencedetail">
-                                        <h4 class="presencetitle">Pulang</h4>
-                                        <span>{{ $presensihariini !== null && $presensihariini->jam_out !== null ? $presensihariini->jam_out : 'Belum Pulang' }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="form-group" style="margin-top: 90px;">
+            @csrf
+
             <div id="rekappresensi">
-                <h3>Rekap Absensi Bulan {{ $namabulan[$bulanini] }} Tahun {{ $tahunini }}</h3>
+                <h3 style = "text-align: center;">Monthly Absence Recap {{ $namabulan[$bulanini] }} {{ $tahunini }}</h3>
                 <div class="row">
                     <div class="col-3">
                         <div class="card">
@@ -111,7 +79,7 @@
                             <span class="badge bg-danger" style="position: absolute; top:4px; right:10px; font-size:0,6rem; z-index:999">{{ $rekappresensi->jmlhadir }}</span>
                             <ion-icon name="accessibility-outline" style="font-size: 1.6rem; color: blue"></ion-icon>
                             <br>
-                            <span style="font-size: 0.8rem; color: blue">Hadir</span>
+                            <span style="font-size: 0.8rem; color: blue">Present</span>
                             </div>
                         </div>
                     </div>
@@ -121,7 +89,7 @@
                             <span class="badge bg-danger" style="position: absolute; top:4px; right:10px; font-size:0,6rem; z-index:999">0</span>
                             <ion-icon name="reader-outline" style="font-size: 1.6rem; color: orange"></ion-icon>
                             <br>
-                            <span style="font-size: 0.8rem; color: orange">Izin</span>
+                            <span style="font-size: 0.8rem; color: orange">Leave</span>
                             </div>
                         </div>
                     </div>
@@ -131,7 +99,7 @@
                             <span class="badge bg-danger" style="position: absolute; top:4px; right:10px; font-size:0,6rem; z-index:999">0</span>
                             <ion-icon name="medkit-outline" style="font-size: 1.6rem; color: green"></ion-icon>
                             <br>
-                            <span style="font-size: 0.8rem; color: green">Sakit</span>
+                            <span style="font-size: 0.8rem; color: green">Sick</span>
                             </div>
                         </div>
                     </div>
@@ -141,7 +109,7 @@
                             <span class="badge bg-danger" style="position: absolute; top:4px; right:10px; font-size:0,6rem; z-index:999">{{ $rekappresensi->jmltelat }}</span>
                             <ion-icon name="time-outline" style="font-size: 1.6rem; color: red"></ion-icon>
                             <br>
-                            <span style="font-size: 0.8rem; color: red">Telat</span>
+                            <span style="font-size: 0.8rem; color: red">Late</span>
                             </div>
                         </div>
                     </div>
@@ -152,7 +120,7 @@
                     <ul class="nav nav-tabs style1" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#home" role="tab">
-                                Bulan Ini
+                                This Month
                             </a>
                         </li>
                         <li class="nav-item">
@@ -201,7 +169,32 @@
                             @endforeach
                         </ul>
                     </div>
+                </div>
+                <div class="container" style = "margin-bottom: 70px;">
+                <h3 style = "text-align: center;">Employee Task</h3>               
+                @if(session('success'))
+                    <div>{{ session('success') }}</div>
+                @endif
 
+                @if($task->isEmpty())
+                <p style = "text-align: center;">There are no assignments for now.</p>
+                @else
+                <div class="container">
+                        @csrf
+                        <div class="form-group">
+                        <h2>{{ $id_tugas }}</h2>
+                        </div>
+                        <div class="form-group">
+                        <h2>{{ $tugas }}</h2>
+                        </div>
+                        <div class="form-group">
+                        <h2>{{ $jumlah_tugas }}</h2>
+                        </div>
+                        <div class="form-group">
+                        <h2>{{ $status }}</h2>
+                        </div>
+                </div>
+                @endif
                 </div>
             </div>
         </div>
